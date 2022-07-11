@@ -36,14 +36,14 @@ class ComplexNumber:
         return f'{self.re}+i{self.im}'
    
     #power of complex numbers
-    def complexPowers(self,other):
-        r1,z1=self.re,self.im
-        if isinstance(other,ComplexNumber):
-            p=int(other)
-            return ComplexNumber(r1,z1)
+    #def complexPowers(self,other):
+        #r1,z1=self.re,self.im
+        #if isinstance(other,ComplexNumber):
+            #p=int(other)
+            #return ComplexNumber(r1,z1)
 
-#z=ComplexNumber(3,5)
-#q=ComplexNumber(4,9)
+z=ComplexNumber(3,5)
+q=ComplexNumber(4,9)
 
 #print(addComplexNumbers(z,q))
 
