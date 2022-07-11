@@ -6,3 +6,4 @@ Created on Sun Jul 10 13:49:17 2022
 from numpy import *
 from matplotlib.pyplot import *
 
+"Task 1"
