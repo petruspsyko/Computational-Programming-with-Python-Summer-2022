@@ -1,0 +1,10 @@
+1 gånger 10^-3 blir 0.001
+2 gånger 10^-3 blir 0.002
+3 gånger 10^-3 blir 0.003
+4 gånger 10^-3 blir 0.004
+5 gånger 10^-3 blir 0.005
+6 gånger 10^-3 blir 0.006
+7 gånger 10^-3 blir 0.007
+8 gånger 10^-3 blir 0.008
+9 gånger 10^-3 blir 0.009000000000000001
+10 gånger 10^-3 blir 0.01
