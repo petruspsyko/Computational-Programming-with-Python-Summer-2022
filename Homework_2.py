@@ -15,11 +15,11 @@ class Interval:
         elif isinstance(real_right,complex):
             raise TypeError("Wrong type!")
         elif real_left > real_right:
-            raise TypeError("Wrong order!")
+            raise TypeError("The interval must ascend!")
         self.real_left=real_left
         self.real_right=real_right
         
-    "Task 2" #vi måste också komma på hur vi löser t.ex. [2,3]+5
+    "Task 2"
     #addition
     def __add__(self,other):
         L1,R1=self.real_left,self.real_right
@@ -59,17 +59,33 @@ class Interval:
         if isinstance(other, Interval):
             L2,R2=other.real_left,other.real_right
             if L2==0 or R2==0:
-                raise TypeError("It's impossible to divide by zero!")
+                raise TypeError("It's not possible to divide by an interval containing zero!")
             else:
                 return Interval(min([L1/L2,L1/R2,R1/L2,R1/R2]),max([L1/L2,L1/R2,R1/L2,R1/R2]))        
     
 #example run with two intervals
-z=Interval(-1.,0.)
-q=Interval(0.,4.) 
-print(q/z)   
+#z=Interval(-1.,0.)
+#q=Interval(0.,4.) 
+#print(q/z)   
         
 "Task 3"
+#Included in task 2. See "__repr__".
 
+"Task 4"
 
+I1=Interval(1,4)
+#print(I1)
+I2=Interval(-2,-1)
+#print(I2)
+#print(I1+I2)
+#print(I1-I2)
+#print(I1*I2)
+#print(I1/I2)
+
+"Task 5"
+
+def __contains__(self):
+    L1,R1=self.real_left,self.real_right
+    if             
     
     
