@@ -63,10 +63,20 @@ class Interval:
             else:
                 return Interval(min([L1/L2,L1/R2,R1/L2,R1/R2]),max([L1/L2,L1/R2,R1/L2,R1/R2]))        
     
+    "Task 5"
+    
+    def __contains__(self,item):
+        return item in [self.real_left,self.real_right]
+    
+#q=Interval(0,4)
+#print(0 in q)
+                  
+    
+    
 #example run with two intervals
-#z=Interval(-1.,0.)
-#q=Interval(0.,4.) 
-#print(q/z)   
+z=Interval(4.,3.)
+q=Interval(1.,4.) 
+print(q/z)   
         
 "Task 3"
 #Included in task 2. See "__repr__".
@@ -82,10 +92,8 @@ I2=Interval(-2,-1)
 #print(I1*I2)
 #print(I1/I2)
 
-"Task 5"
+"Task 6"
 
-def __contains__(self):
-    L1,R1=self.real_left,self.real_right
-    if             
+      
     
     
