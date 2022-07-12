@@ -66,17 +66,18 @@ class Interval:
     "Task 5"
     
     def __contains__(self,item):
-        return item in [self.real_left,self.real_right]
-    
-#q=Interval(0,4)
-#print(0 in q)
-                  
-    
-    
+        if self.real_left <= item <= self.real_right:
+            return True
+        else:
+            return False
+
+#q=Interval(1.0,4.0)
+#print(5 in q)
+                      
 #example run with two intervals
-z=Interval(4.,3.)
-q=Interval(1.,4.) 
-print(q/z)   
+#q=Interval(4.,3.)
+#z=Interval(1.,4.) 
+#print(q/z)   
         
 "Task 3"
 #Included in task 2. See "__repr__".
