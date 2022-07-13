@@ -23,13 +23,17 @@ class Interval:
     #addition
     def __add__(self,other):
         L1,R1=self.real_left,self.real_right
-        if isinstance(other, Interval):
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(L1+other,R1+other)
+        else:
             L2,R2=other.real_left,other.real_right
             return Interval(L1+L2,R1+R2)
     
     def __radd__(self, other):
         L1,R1=self.real_left,self.real_right
-        if isinstance(other, Interval):
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(L1+other,R1+other)
+        else:
             L2,R2=other.real_left,other.real_right
             return Interval(L2+L1,R2+R1)
 
@@ -38,21 +42,36 @@ class Interval:
     #subtraction
     def __sub__(self,other):
         L1,R1=self.real_left,self.real_right
-        if isinstance(other, Interval):
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(L1-other,R1-other)
+        else:
             L2,R2=other.real_left,other.real_right
             return Interval(L1-R2,R1-L2)
         
     def __rsub__(self,other):
         L1,R1=self.real_left,self.real_right
-        if isinstance(other, Interval):
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(other-R1,other-L1)
+        else:
             L2,R2=other.real_left,other.real_right
             return Interval(L2-R1,R2-L1)
     #multiplication
     def __mul__(self,other):
         L1,R1=self.real_left,self.real_right
-        if isinstance(other, Interval):
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(min([L1*other,R1*other]),max([L1*other,R1*other]))
+        else:
             L2,R2=other.real_left,other.real_right
             return Interval(min([L1*L2,L1*R2,R1*L2,R1*R2]),max([L1*L2,L1*R2,R1*L2,R1*R2]))
+    
+    def __rmul__(self,other):
+        L1,R1=self.real_left,self.real_right
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(min([other*L1,other*R1]),max([other*L1,other*R1]))
+        else:
+            L2,R2=other.real_left,other.real_right
+            return Interval(min([L1*L2,L1*R2,R1*L2,R1*R2]),max([L1*L2,L1*R2,R1*L2,R1*R2]))
+    
     #division
     def __truediv__(self,other):
         L1,R1=self.real_left,self.real_right
@@ -61,7 +80,7 @@ class Interval:
             if L2==0 or R2==0:
                 raise TypeError("It's not possible to divide by an interval containing zero!")
             elif min([L1/L2,L1/R2,R1/L2,R1/R2]) - max([L1/L2,L1/R2,R1/L2,R1/R2]) <= -10**100:
-                raise TypeError("The result is an infinitely large interval :)")
+                raise TypeError("The result is an infinitely large interval :)") #also: if division is infinitely large
             else:
                 return Interval(min([L1/L2,L1/R2,R1/L2,R1/R2]),max([L1/L2,L1/R2,R1/L2,R1/R2]))        
     
@@ -72,7 +91,11 @@ class Interval:
             return True
         else:
             return False
-        
+  
+    def __neg__(self):
+        L1,R1=self.real_left,self.real_right
+        return Interval(-R1,-L1)
+  
 #q=Interval(1.0,4.0)
 #print(5 in q)
                       
@@ -100,6 +123,11 @@ I2=Interval(-2,-1)
 
 "Task 7"
 #See Task 2 under __init__.
+
+"Task 8"
+#defined in dunder methods. __nerg__ under Task 5.
+
+    
 
 
 
