@@ -14,7 +14,7 @@ def approx_ln(x, n):                #this function will approximate the logarith
     
     for i in range(n):              #as long as i is in range n, we have the following function
         a_0 = (a_0+g_0)/2           #we put the values a_0 and g_0 in the already given formula
-        g_0 = sqrt(a_0 + g_0)
+        g_0 = sqrt(a_0 * g_0)
     return (x-1)/a_0                #we get a value after n iterations on a_0
 
 #2
@@ -38,7 +38,7 @@ show()
 x = range(1,101)
 y = []
 for i in x:
-    y.append(approx_ln(i,5))                        #to see what happens to the function if the value of n is different we change it to 5
+    y.append(approx_ln(i,2))                        #to see what happens to the function if the value of n is different we change it to 5
 
 axis.plot(x,y, color="red", label='approx_ln, n=5')
 legend()
@@ -89,7 +89,7 @@ def fast_approx_ln(x,n):
     
     for i in range(1,n): # vi hoppar över element(0,0)           
         a_0 = (a_0+g_0)/2           
-        g_0 = sqrt(a_0 + g_0) # här produceras a_0+i, vilket heter a_0
+        g_0 = sqrt(a_0 * g_0) # här produceras a_0+i, vilket heter a_0
         A[0,i]=a_0 # lägg till a_i på plats i 
         
     for i in range(1,n):
@@ -100,8 +100,8 @@ def fast_approx_ln(x,n):
     return (x-1)/A[n-1,n-1]
 
 #5
-x = arange(-50.0, 50.0, 0.1)
-y = arange(0,100.0, 0.1)
+#x = arange(-50.0, 50.0, 0.1)
+#y = arange(0,100.0, 0.1)
 
 figure4,axis3=subplots()
 
@@ -111,7 +111,7 @@ for i in x:
     y.append(fast_approx_ln(i, 2))
 
 axis3.plot(x,y, color="blue")
-yscale('symlog')
+yscale('log')
 show()
 
 x = range(1,100) #3 iterations
@@ -120,7 +120,7 @@ for i in x:
     y.append(fast_approx_ln(i, 3))
 
 axis3.plot(x,y, color="green")
-yscale('symlog')
+yscale('log')
 show()
 
 x = range(1,100) #4 iterations
@@ -129,7 +129,7 @@ for i in x:
     y.append(fast_approx_ln(i, 4))
 
 axis3.plot(x,y, color="red")
-yscale('symlog')
+yscale('log')
 show()
 
 x = range(1,100) #5 iterations
@@ -138,5 +138,5 @@ for i in x:
     y.append(fast_approx_ln(i, 5))
 
 axis3.plot(x,y, color="turquoise")
-yscale('symlog')
+yscale('log')
 show()

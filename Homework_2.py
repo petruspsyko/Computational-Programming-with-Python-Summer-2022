@@ -95,7 +95,15 @@ class Interval:
     def __neg__(self):
         L1,R1=self.real_left,self.real_right
         return Interval(-R1,-L1)
-  
+
+    "Task 9"    
+
+    def __pow__(self,other): #perhaps it needs more fixing?
+        L1,R1=self.real_left,self.real_right
+        if isinstance(other,int) or isinstance(other,float):
+            return Interval(L1**other,R1**other)
+
+x=Interval(-2,2)
 #q=Interval(1.0,4.0)
 #print(5 in q)
                       
@@ -125,7 +133,9 @@ I2=Interval(-2,-1)
 #See Task 2 under __init__.
 
 "Task 8"
-#defined in dunder methods. __nerg__ under Task 5.
+#defined in dunder methods. __neg__ under Task 5.
+
+"Task 10"
 
     
 
