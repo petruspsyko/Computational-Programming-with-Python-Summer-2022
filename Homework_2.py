@@ -14,8 +14,8 @@ class Interval:
             raise TypeError("Wrong type!")
         elif isinstance(real_right,complex):
             raise TypeError("Wrong type!")
-        #elif real_left > real_right:
-        #    raise TypeError("The interval must ascend!")
+        elif real_right is not None and real_left > real_right:
+            raise TypeError("The interval must ascend!")
         self.real_left=real_left
         self.real_right=real_right if real_right is not None else real_left
     
