@@ -100,43 +100,47 @@ def fast_approx_ln(x,n):
     return (x-1)/A[n-1,n-1]
 
 #5
-#x = arange(-50.0, 50.0, 0.1)
-#y = arange(0,100.0, 0.1)
 
-figure4,axis3=subplots()
+def difference(x,n):
+    return abs(log(x) - fast_approx_ln(x, n))
+figure4, axis3=subplots()
 
-x = range(1,100) #2 iterations
+x =linspace(1*10**-10000000, 20, 1000) #2 iterations
 y = []
 for i in x:
-    y.append(fast_approx_ln(i, 2))
+    y.append(difference(i, 2))
 
 axis3.plot(x,y, color="blue")
 yscale('log')
+#yscale('symlog')
 show()
 
-x = range(1,100) #3 iterations
+x =linspace(1*10**-10000000, 20, 1000) #3 iterations
 y = []
 for i in x:
-    y.append(fast_approx_ln(i, 3))
+    y.append(difference(i, 3))
 
 axis3.plot(x,y, color="green")
 yscale('log')
+#yscale('symlog')
 show()
 
-x = range(1,100) #4 iterations
+x =linspace(1*10**-10000000, 20, 1000) #4 iterations
 y = []
 for i in x:
-    y.append(fast_approx_ln(i, 4))
+    y.append(difference(i, 4))
+
+axis3.plot(x,y, color="purple")
+yscale('log')
+#yscale('symlog')
+show()
+
+x =linspace(1*10**-10000000, 20, 1000) #5 iterations
+y = []
+for i in x:
+    y.append(difference(i, 5))
 
 axis3.plot(x,y, color="red")
 yscale('log')
-show()
-
-x = range(1,100) #5 iterations
-y = []
-for i in x:
-    y.append(fast_approx_ln(i, 5))
-
-axis3.plot(x,y, color="turquoise")
-yscale('log')
+#yscale('symlog')
 show()
