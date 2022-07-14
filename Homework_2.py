@@ -14,7 +14,7 @@ class Interval:
             raise TypeError("Wrong type!")
         elif isinstance(real_right,complex):
             raise TypeError("Wrong type!")
-        elif real_right is not None and real_left > real_right:
+        elif real_right is not None and real_left > real_right != 0:#the last part is for making possible [0,0]
             raise TypeError("Not an interval!")
         self.real_left=real_left
         self.real_right=real_right if real_right is not None else real_left
@@ -147,8 +147,28 @@ I2=Interval(-2,-1)
 
 "Task 10"
 
+upperbv=[]
+for xu in linspace(0.,1,1000)+0.5:
+    upperbv.append(Interval(0,xu))
+lowerbv=[]
+for xl in linspace(0.,1,1000):
+    lowerbv.append(Interval(xl,1000))
+thousandint=[]
+for i in range(1000):
+    thousandint.append(lowerbv[i]+upperbv[i])
+thousandint_final=[]
+for k in range(1000):
+    thousandint_final.append(thousandint[k]-Interval(1000,0))
     
+def f(I):
+    return 3*I**3-2*I**2-5*I-1
 
+flist=[]
+for I in range(1000):
+        
+    
+    
+    
 
 
       
