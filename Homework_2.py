@@ -192,6 +192,8 @@ axis.plot(x,yl,color="purple")
 title('$p(I)=3I^3-2I^2-5I-1,I=Interval(x,x+0.5)$')
 xlabel('x')
 ylabel('p(I)')
+xlim(0,1)
+ylim(-10,4)
 show()
 
 
