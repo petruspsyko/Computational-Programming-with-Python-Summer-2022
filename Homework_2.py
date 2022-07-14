@@ -113,6 +113,14 @@ class Interval:
             else:
                 return Interval(0,max(L1**other,R1**other))
 
+    def lowerb(self):
+        L1,R1=self.real_left,self.real_right
+        return L1 
+
+    def upperb(self):
+        L1,R1=self.real_left,self.real_right
+        return R1
+
 x=Interval(-2,2)
 #q=Interval(1.0,4.0)
 #print(5 in q)
@@ -165,12 +173,25 @@ def f(I):
 
 flist=[]
 for I in range(1000):
-        
-    
-    
-    
+    flist.append(f(thousandint_final[I]))
+
+#defined method lowerb and method upperb
+yl=[]
+for i in range(1000):
+    yl.append(Interval.lowerb(flist[i]))
+
+yu=[]
+for i in range(1000):
+    yu.append(Interval.upperb(flist[i]))
+
+figure, axis=subplots()
+x=linspace(0.,1,1000)
+axis.plot(x,yu,color="green")
+x=linspace(0.,1,1000)
+axis.plot(x,yl,color="purple")
+title('$p(I)=3I^3-2I^2-5I-1,I=Interval(x,x+0.5)$')
+xlabel('x')
+ylabel('p(I)')
+show()
 
 
-      
-    
-    

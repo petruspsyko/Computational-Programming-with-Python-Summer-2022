@@ -18,7 +18,7 @@ def approx_ln(x,n): # begins definition of approx_ln(x)
 
 "Task 2: Plot of ln(x) and approx_ln(x,n)"
 
-x_axis1=linspace(0.1,4,200) # I made it 0.1 so that it does'n go towards negative inf.
+x_axis1=linspace(0.1,4,200) # I made it 0.1 so that it doesn't go towards negative inf.
 y_axis1=[]
 for i in x_axis1:
     y_axis1.append(log(i))
