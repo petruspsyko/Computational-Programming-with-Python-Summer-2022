@@ -121,7 +121,7 @@ class Interval:
         L1,R1=self.real_left,self.real_right
         return R1
 
-x=Interval(-2,2)
+#x=Interval(-2,3)
 #q=Interval(1.0,4.0)
 #print(5 in q)
                       
