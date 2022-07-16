@@ -8,14 +8,6 @@ from matplotlib.pyplot import *
 
 "Task 1"
 
-fig, ax = subplots()
-ax.plot(x,f(x),label = '$x^3+2x^2+x+1$')
-ax.plot(x,slope(x),label = '$3x^2+4x+1$')
-ax.legend(loc = 'lower center', fontsize = 'small')
-fig.savefig("my_figure.png") #sparar som npg
-
-"Task 2"
-
 # Define polynomial of degree 3
 def f(x): 
     return x**3+2*x**2+x+1
@@ -23,6 +15,8 @@ def f(x):
 # Define derivative
 def slope(x): #ger lutningen k
     return 3*x**2+4*x+1
+
+"Task 2"
 
 # Define x data range for polynomial
 x = linspace(-5,5,100)
@@ -40,9 +34,17 @@ def line(x, x1, y1):
 xrange = linspace(x1-2, x1+2, 10)
 
 # Plot the figure
-fig2,ax2=subplots()
+
+fig1,ax1=subplots()
+ax1.plot(x,f(x),label = '$x^3+2x^2+x+1$')
+ax1.plot(x,slope(x),label = '$3x^2+4x+1$')
+ax1.legend(loc = 'lower center', fontsize = 'small')#för att få med label i grafen, placering
+
+fig1.savefig("my_figure_1.png") #sparar som npg
+
+fig2, ax2=subplots()
 ax2.plot(x, f(x))
-ax2.scatter(x1, y1, color='green', s=50) #plottar punkten
+scatter(x1, y1, color='green', s=50) #plottar punkten
 ax2.plot(xrange, line(xrange, x1, y1), 'green', linewidth = 2)
 xlabel('x')
 ylabel('y')
@@ -50,6 +52,7 @@ xlim(-4,4)
 title('Tangent i kurvan $f(x)=x^3+2x^2+1$')
 ax2.set_xticks([2]) # för att ange vissa viktiga värden
 ax2.set_xticklabels(['$f(2)$'])
-ax2.annotate("$tangent$",xy = (3,35),xytext=(2.5,150),arrowprops={'facecolor':'green','shrink':0.1,'width':0.3})
+annotate("$tangent$",xy = (3,40),xytext=(2.5,150),arrowprops={'facecolor':'green','shrink':0.05,'width':0.3})
+#shrink gör pilen kortare
 
-
+fig2.savefig("my_figure_2.png") #sparar som npg
