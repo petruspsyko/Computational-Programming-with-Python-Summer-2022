@@ -5,18 +5,29 @@ Created on Wed Jul 20 20:53:00 2022
 """
 from numpy import *
 from matplotlib.pyplot import *
+import imageio as iio
 
-"Exempel för att skapa W-matris"
+"Exempel för att skapa Wavelet transformation"
 
-n=8
+glass=iio.imread('glass.jpg',as_gray=True)
 
-W=zeros((n,n))
+def Wavelet_trans(A):
+        n=[A.shape][0][0]
+        W_n=zeros((n,n))
+        r=int(n/2)
+        m=[A.shape][0][1]
+        W_m=zeros((m,m))
+        p=int(m/2)
+        wf=1/sqrt(2)
+    
+        for i in range(r):    
+            W_n[i][i*2]=W_n[i][2*i+1]=W_n[i+r][2*i+1]=wf
+            W_n[i+r][i*2]=-wf
+    
+            for k in range(p):
+                W_m[k][k*2]=W_m[k][2*k+1]=W_m[k+p][2*k+1]=wf
+                W_m[k+p][k*2]=-wf
+    
+        return matmul((matmul(W_n,A)),W_m.transpose())
 
-for i in range(4): #halva n
-    W[i][i*2]=(1/sqrt(2))
-    W[i][2*i+1]=(1/sqrt(2))
-for k in range(4): #halva n
-    W[k+4][k*2]=(-1/sqrt(2)) #k + halva n
-    W[k+4][2*k+1]=(1/sqrt(2)) #k + halva n
-        
-
+iio.imsave('glass.jpg',glass)

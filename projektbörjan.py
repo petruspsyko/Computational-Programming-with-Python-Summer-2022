@@ -33,14 +33,10 @@ W_mt=W_m.transpose()
 
 B=matmul(A,W_mt)
 
-#imshow(B,cmap='gray')
-
-kvinna2=zeros((300,239)) #nästa bild - submatrix
+kvinna2=zeros((300,239)) #nästa bild - submatris
 for i in range(300):
     for k in range(239):
         kvinna2[i][k]=B[i][k]
-
-#imshow(kvinna2,cmap='gray')
 
 #Vi börjar om igen.
 
@@ -72,9 +68,13 @@ W2_mt=W2_m.transpose()
 
 B2=matmul(A2_red,W2_mt)
 
+#imshow(B2)
+
 kvinna3=zeros((150,119)) #nästa bild - submatrix
 for i in range(150):
     for k in range(119):
         kvinna3[i][k]=B2[i][k]
 
-imshow(kvinna3,cmap='gray')
+#imshow(kvinna3)
+
+#iio.imsave('kvinna3.jpg',kvinna3)
