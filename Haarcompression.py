@@ -7,17 +7,15 @@ from numpy import *
 from matplotlib.pyplot import *
 import imageio as iio
 
-"Exempel för att skapa Wavelet transformation"
-
-får=iio.imread('får.jpg',as_gray=True)
+kvinna=iio.imread('kvinna.jpg',as_gray=True)
 
 def Wavelet_trans(A):
     if isinstance(A,int):
-        raise TypeError("Not a foto!")
+        raise TypeError("Not an image!")
     elif isinstance(A,float):
-        raise TypeError("Not a foto!")
+        raise TypeError("Not an image!")
     elif isinstance(A,complex):
-        raise TypeError("Not a foto!")
+        raise TypeError("Not an image!")
     elif [A.shape][0][0] < 2: # Om A bara har en rad 
         raise TypeError("Not a valid format!") 
     elif [A.shape][0][0] == A.size: # Om A endast består av rader - är 1D
@@ -51,10 +49,9 @@ def Wavelet_trans(A):
                 B2[i][k]=B[i][k] # Stoppar det i övre vänstra hörnet i B
     return B2
 
-def simplifyfoto(A,n): # Halverar antalet pixlar n gånger
+def simplifyimage(A,n): # Halverar antalet pixlar n gånger
     for i in range(n):
         A=Wavelet_trans(A)
     return A 
 
-#gruppfoto_trans=Wavelet_trans(gruppfoto)
-#iio.imsave('grupfoto_trans.jpg',gruppfoto_trans)
+#imshow(simplifyimage(kvinna,2),cmap='gray')
