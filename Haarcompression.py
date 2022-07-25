@@ -7,7 +7,7 @@ from numpy import *
 from matplotlib.pyplot import *
 import imageio as iio
 
-kvinna=iio.imread('kvinna.jpg',as_gray=True)
+hannes=iio.imread('hannes.jpg',as_gray=True)
 
 def Wavelet_trans(A):
     if isinstance(A,int):
@@ -49,9 +49,9 @@ def Wavelet_trans(A):
                 B2[i][k]=B[i][k] # Stoppar det i övre vänstra hörnet i B
     return B2
 
-def simplifyimage(A,n): # Halverar antalet pixlar n gånger
+def simplifyimage(A,n): # ungefär 0.25 gånger antalet pixlar n gånger
     for i in range(n):
         A=Wavelet_trans(A)
     return A 
 
-#imshow(simplifyimage(kvinna,2),cmap='gray')
+imshow(simplifyimage(hannes,7),cmap='gray')
