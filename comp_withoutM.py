@@ -44,7 +44,7 @@ for k in range(600): # antal kolonner
         B2[r][k]=A2[r+n][k]*(1/sqrt(2))+A2[r+n+1][k]*(1/sqrt(2)) 
         n=n+1
 
-for k in range(239):
+for k in range(600):
     n=0
     for r in range(239):
     # mult med -1/sqrt(2) resp. 1/sqrt(2) och adderar 
@@ -54,8 +54,8 @@ for k in range(239):
         n=n+1
 
 B_final = B2.transpose()
-
-imshow(B_final,cmap='gray')
+print(B_final)
+#imshow(B_final,cmap='gray')
     
 # get the end time
 et = time.time()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 20 20:53:00 2022
+Created on Tue Aug  2 19:16:51 2022
 @author: petrusisaksson
 """
 from numpy import *
@@ -42,17 +42,44 @@ def Wavelet_trans(A):
                 W_m[k+p][k*2]=-wf
     
     B=matmul((matmul(W_n,A)),W_m.transpose()) # B består av fyra submatriser
-    #imshow(B,cmap='gray') 
-    #print(B)
-    B2=zeros((r,p)) # Ny matris för den övre vänstra submatrisen    
-    for i in range(r):
-        for k in range(p):
-                B2[i][k]=B[i][k] # Stoppar det i övre vänstra hörnet i B
-    return B2
 
-def simplifyimage(A,n): # ungefär 0.25 gånger antalet pixlar n gånger
-    for i in range(n):
-        A=Wavelet_trans(A)
-    return A 
+    return B
 
-#imshow(simplifyimage(kvinna,1),cmap='gray')
+B=Wavelet_trans(kvinna)
+
+#Function to trim the picture (trim) - get rid of odd rows/columns
+def trim (data):
+    N, M = data.shape
+    if N % 2 != 0:
+        data=data[0:N-1,:]
+    if M % 2 != 0:
+        data=data[:,0:M-1]
+    return (data)
+
+#Trim image size
+N,M = trim(B).shape
+
+#Function (Create Matrix)
+def createMatrix (k):
+    A = 1/sqrt(2)
+    n = int(k/2)
+    W = np.zeros((n*2,n*2))
+
+    for i in range (n):
+        W[i, 2*i] = A
+        W[i, 2*i+1] = A
+        W[i+n, 2*i] = -A
+        W[i+n, 2*i+1] = A     
+    
+    return (W)
+
+W_n = createMatrix (int(N))
+W_m = createMatrix (int(M))
+W_nt=W_n.transpose()
+
+print(kvinna)
+print(matmul(matmul(W_nt,B),W_m))
+
+kvinna_final=matmul(matmul(W_nt,B),W_m)
+imshow(kvinna,cmap='gray')
+imshow(kvinna_final,cmap='gray')
